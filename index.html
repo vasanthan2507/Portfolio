@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasanthan - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Green Theme (Default) */
+            --primary-color: #10B981;
+            --primary-dark: #047857;
+            --primary-light: #6EE7B7;
+            --secondary-color: #F0FDF4;
+            --accent-color: #34D399;
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --border-color: #E5E7EB;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Dark Mode Variables
+        [data-theme="dark"]{
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --bg-primary: #111827;
+            --bg-secondary: #1F2937;
+            --bg-card: #1F2937;
+            --border-color: #374151;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --font-color: white;
+        }
+
+        /* Purple Theme */
+        /* [data-color="purple"] {
+            --primary-color: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #C4B5FD;
+            --secondary-color: #FAF5FF;
+            --accent-color: #A78BFA;
+        }
+
+        /* Blue Theme */
+        /* [data-color="blue"] {
+            --primary-color: #3B82F6;
+            --primary-dark: #2563EB;
+            --primary-light: #93C5FD;
+            --secondary-color: #EFF6FF;
+            --accent-color: #60A5FA;
+        } */
+
+        /* Brown Theme */
+        /* [data-color="brown"] {
+            --primary-color: #92400E;
+            --primary-dark: #78350F;
+            --primary-light: #FCD34D;
+            --secondary-color: #FFFBEB;
+            --accent-color: #D97706;
+        } */
+
+        /* Orange Theme */
+        /* [data-color="orange"] {
+            --primary-color: #EA580C;
+            --primary-dark: #C2410C;
+            --primary-light: #FED7AA;
+            --secondary-color: #FFF7ED;
+            --accent-color: #FB923C;
+        } */
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(17, 24, 39, 0.95);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Theme Controls */
+        .theme-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .theme-color {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-color:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-color.active {
+            border-color: var(--text-primary);
+            transform: scale(1.2);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--secondary-color);
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-primary) 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23000" opacity="0.03"/><circle cx="80" cy="80" r="1" fill="%23000" opacity="0.03"/><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.03"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            background: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* Skills */
+        .skill-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .progress {
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 1s ease;
+        }
+
+        /* Projects */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(52, 211, 153, 0.9));
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-left: 60px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -45px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item {
+                margin-left: 45px;
+            }
+            
+            .timeline-icon {
+                left: -30px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-code"></i> Vasanthan
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certifications">Certifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="theme-controls">
+                    <!-- <div class="theme-selector">
+                        <div class="theme-color" data-color="green" style="background: #10B981;" title="Green Theme"></div>
+                        <div class="theme-color" data-color="purple" style="background: #8B5CF6;" title="Purple Theme"></div>
+                        <div class="theme-color" data-color="blue" style="background: #3B82F6;" title="Blue Theme"></div>
+                        <div class="theme-color" data-color="brown" style="background: #92400E;" title="Brown Theme"></div>
+                        <div class="theme-color" data-color="orange" style="background: #EA580C;" title="Orange Theme"></div>
+                    </div> -->
+                    <!-- <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon"></i>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <div class="fade-in">
+                        <h1 class="hero-title">Vasanthan</h1>
+                        <p class="hero-subtitle">Full Stack Developer &amp; IT Professional</p>
+                        <p class="lead mb-4">Passionate about delivering high-quality solutions and driving innovation through code. Specialized in C#/.NET development with expertise in web technologies and machine learning.</p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Get In Touch
+                            </a>
+                            <button class="btn btn-outline-primary" onclick="downloadResume()">
+                                <i class="fas fa-download me-2"></i>Download CV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="fade-in">
+                        <img src="image.png" alt="Vasanthan" class="profile-img img-fluid" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <!-- <div style="display:none; width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;"> -->
+                            <!-- <i class="fas fa-user"></i> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card fade-in">
+                        <div class="card-body p-4">
+                            <p class="lead" style="text-align: justify;">
+                                    
+                                    A passionate <strong>Python Developer and Data Enthusiast</strong> with a keen interest in <strong>Machine Learning, Data Analysis, and AI-driven solutions</strong>. I love transforming raw data into meaningful insights and building intelligent systems that help solve real-world problems.
+                                    With strong foundations in <strong>Python, Django, and SQL</strong>, I have developed projects involving <strong>data visualization, predictive modeling, and automation</strong>. I’m always eager to learn new technologies, experiment with datasets, and contribute to impactful, data-centric applications.                     
+                                    Currently pursuing my <strong>MCA</strong> at <strong>Sri Manakula Vinayagar Engineering College</strong>, I aim to grow into a <strong>Data Analyst / Machine Learning Engineer</strong> where I can apply analytical thinking and coding skills to deliver data-driven solutions.
+                                </p>
+
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h5><i class="fas fa-info-circle me-2 text-primary"></i>Personal Details</h5>
+                                    <ul class="list-unstyled">
+                                        <li><strong>Date of Birth:</strong> 25/07/2003</li>
+                                        <li><strong>Location:</strong> Cuddalore, India</li>
+                                        <li><strong>Languages:</strong> English, Tamil</li>
+                                        <li><strong>Interests:</strong> Books, Music</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5><i class="fas fa-bullseye me-2 text-primary"></i>Focus Areas</h5>
+                                    <ul class="list-unstyled">
+                                        <li>• Full Stack Development</li>
+                                        <li>• Machine Learning Applications</li>
+                                        <li>• Database Design &amp; Optimization</li>
+                                        <li>• Collaborative Team Projects</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education Timeline -->
+            <div class="mt-5">
+                <h3 class="text-center mb-4 fade-in">Education</h3>
+                <div class="timeline fade-in">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">MCA (Autonomous Institution)</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Sri Manakula Vinayagar Engineering College, Madagadipet</h6>
+                                <p class="card-text">Pondicherry University • 2024-26 • 90.05%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">BCA</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Raak Arts and Science College, Perambai</h6>
+                                <p class="card-text">Annamalai University • 2021-24 • 83.1%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">HSC</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">SRK English Higher Secondary School, Karikalampakkam</h6>
+                                <p class="card-text">State Board • 2020-21 • 83%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">SSLC</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">SRK English Higher Secondary School, Karikalampakkam</h6>
+                                <p class="card-text">State Board • 2018-19 • 73%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card project-card h-100 fade-in">
+                        <div class="card-body">
+                            <h5 class="card-title">Plagiarism Analyzer</h5>
+                            <p class="card-text">Django-based tool to detect and analyze plagiarism in text documents using Cosine Similarity algorithm and Google API integration.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">Google API</span>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <h5 class="text-white mb-3">Key Features</h5>
+                            <ul class="text-white list-unstyled">
+                                <li>• Cosine Similarity Detection</li>
+                                <li>• Multi-format Support</li>
+                                <li>• Web Search Integration</li>
+                                <li>• Plagiarism Removal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card project-card h-100 fade-in">
+                        <div class="card-body">
+                            <h5 class="card-title">Expense Tracker</h5>
+                            <p class="card-text">Responsive web platform for managing personal finances with secure authentication, budget alerts, and interactive charts.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">Bootstrap 5</span>
+                                <span class="tech-tag">Chart.js</span>
+                                <span class="tech-tag">JWT Auth</span>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <h5 class="text-white mb-3">Key Features</h5>
+                            <ul class="text-white list-unstyled">
+                                <li>• Budget Tracking</li>
+                                <li>• Interactive Charts</li>
+                                <li>• Secure Authentication</li>
+                                <li>• Detailed Reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card project-card h-100 fade-in">
+                        <div class="card-body">
+                            <h5 class="card-title">Disease Prediction System</h5>
+                            <p class="card-text">ML-powered web application for disease prediction from symptoms with confidence scores and Aadhaar authentication.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">Bootstrap 5</span>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <h5 class="text-white mb-3">Key Features</h5>
+                            <ul class="text-white list-unstyled">
+                                <li>• ML Predictions</li>
+                                <li>• Confidence Scoring</li>
+                                <li>• Secure Authentication</li>
+                                <li>• Report Export</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Skills</h2>
+            
+            <!-- Programming Languages -->
+            <div class="mb-5">
+                <h4 class="mb-4 fade-in"><i class="fas fa-code me-2 text-primary"></i>Programming Languages</h4>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon"><i class="fab fa-cuttlefish"></i></div>
+                            <h6>C Programming</h6>
+                            <div class="progress mt-3">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85"></div>
+                            </div>
+                            <small class="text-muted">85%</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <h6>Python</h6>
+                            <div class="progress mt-3">
+                                <div class="progress-bar" role="progressbar" style="width: 90%;" data-width="90"></div>
+                            </div>
+                            <small class="text-muted">90%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Technologies -->
+            <div class="mb-5">
+                <h4 class="mb-4 fade-in"><i class="fas fa-globe me-2 text-primary"></i>Web Technologies</h4>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                            <h6>HTML5</h6>
+                            <div class="progress mt-3">
+                                <div class="progress-bar" role="progressbar" style="width: 90%;" data-width="90"></div>
+                            </div>
+                            <small class="text-muted">90%</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                            <h6>CSS3</h6>
+                            <div class="progress mt-3">
+                                <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85"></div>
+                            </div>
+                            <small class="text-muted">85%</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                            <h6>JavaScript</h6>
+                            <div class="progress mt-3">
+                                <div class="progress-bar" role="progressbar" style="width: 80%;" data-width="80"></div>
+                            </div>
+                            <small class="text-muted">80%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Frameworks & Tools -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h4 class="mb-4 fade-in"><i class="fas fa-layer-group me-2 text-primary"></i>Frameworks &amp; Databases</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="skill-item fade-in">
+                                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                                <h6>Django</h6>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85"></div>
+                                </div>
+                                <small class="text-muted">85%</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="skill-item fade-in">
+                                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                                <h6>MySQL</h6>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%;" data-width="80"></div>
+                                </div>
+                                <small class="text-muted">80%</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h4 class="mb-4 fade-in"><i class="fas fa-tools me-2 text-primary"></i>Tools &amp; Systems</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="skill-item fade-in">
+                                <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                                <h6>Git</h6>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%;" data-width="75"></div>
+                                </div>
+                                <small class="text-muted">75%</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="skill-item fade-in">
+                                <div class="skill-icon"><i class="fab fa-linux"></i></div>
+                                <h6>Linux</h6>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 70%;" data-width="70"></div>
+                                </div>
+                                <small class="text-muted">70%</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Workshops -->
+    <section id="certifications" class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title fade-in">Certifications &amp; Workshops</h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 fade-in">
+                        <div class="card-header">
+                            <h4><i class="fas fa-certificate me-2 text-primary"></i>Certifications</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Networking</h6>
+                                        <small class="text-muted">Cisco</small>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">Certified</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">ML Basics</h6>
+                                        <small class="text-muted">Infosys Springboard</small>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">Certified</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Power BI</h6>
+                                        <small class="text-muted">Udemy</small>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">Certified</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Front End Development</h6>
+                                        <small class="text-muted">Udemy</small>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card h-100 fade-in">
+                        <div class="card-header">
+                            <h4><i class="fas fa-chalkboard-teacher me-2 text-primary"></i>Workshops</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <h6 class="mb-1">Ethical Hacking</h6>
+                                    <small class="text-muted">E.S Arts and Science College, Villupuram</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <h6 class="mb-1">Python Programming</h6>
+                                    <small class="text-muted">RAAK Arts and Science College, Perambai</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <h6 class="mb-1">Drone Technology</h6>
+                                    <small class="text-muted">Pondicherry Technology University, Kalapet</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <h6 class="mb-1">Digital Transformation in Manufacturing</h6>
+                                    <small class="text-muted">Sri Manakula Vinayagar Engineering College</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Achievements & Extracurricular -->
+            <div class="mt-5">
+                <h3 class="text-center mb-4 fade-in">Achievements &amp; Extracurricular</h3>
+                <div class="row g-4">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card fade-in">
+                            <div class="card-body">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="text-center">
+                                            <div class="skill-icon"><i class="fas fa-trophy"></i></div>
+                                            <h6>Coding Contests</h6>
+                                            <p class="text-muted">Participated in debugging and coding competitions</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-center">
+                                            <div class="skill-icon"><i class="fas fa-users"></i></div>
+                                            <h6>Peer Mentoring</h6>
+                                            <p class="text-muted">Active in project teamwork and mentoring</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-center">
+                                            <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                                            <h6>Career Growth</h6>
+                                            <p class="text-muted">Focused on discipline and professional development</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-center">
+                                            <div class="skill-icon"><i class="fas fa-signal"></i></div>
+                                            <h6>Morse Code</h6>
+                                            <p class="text-muted">Practice and study of communication systems</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="contact-info fade-in">
+                        <h4 class="mb-4">Contact Information</h4>
+                        <div class="mb-3">
+                            <h6><i class="fas fa-envelope me-2 text-primary"></i>Email</h6>
+                            <a href="mailto:vasanthan2507@gmail.com" class="text-decoration-none">vasanthan2507@gmail.com</a>
+                        </div>
+                        <div class="mb-3">
+                            <h6><i class="fas fa-phone me-2 text-primary"></i>Phone</h6>
+                            <a href="tel:+919150432205" class="text-decoration-none">+91 9150432205</a>
+                        </div>
+                        <div class="mb-3">
+                            <h6><i class="fas fa-map-marker-alt me-2 text-primary"></i>Location</h6>
+                            <span>Cuddalore, India</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="mailto:vasanthan2507@gmail.com" class="social-link" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/vasanthanvijayan-dev" class="social-link" target="_blank" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/vasanthan2507" class="social-link" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card fade-in">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Send Message</h5>
+                                <form
+                                action="https://formspree.io/f/manlpzoq"
+                                method="POST"
+                                class="fade-in"
+                                >
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                                </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Download Section -->
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <div class="card fade-in">
+                        <div class="card-body py-4">
+                            <h5 class="mb-4"><i class="fas fa-download me-2 text-primary"></i>Download Assets</h5>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <button class="btn btn-primary" onclick="downloadResume()">
+                                    <i class="fas fa-file-pdf me-2"></i>Download Resume
+                                </button>
+                                <button class="btn btn-outline-primary" onclick="downloadSourceCode()">
+                                    <i class="fas fa-code me-2"></i>Download Source Code
+                                </button>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">Get my latest resume or download the complete source code of this portfolio website.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2025 Vasanthan. All rights reserved.</p>
+                    <p class="text-muted">Built with Bootstrap 5 &amp; modern web technologies</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme Management
+        class ThemeManager {
+            constructor() {
+                this.init();
+            }
+            
+            init() {
+                // Use in-memory storage for theme preferences
+                this.savedTheme = this.savedTheme || {
+                    mode: 'light',
+                    color: 'green'
+                };
+                
+                this.applyTheme(this.savedTheme);
+                this.setupEventListeners();
+                this.updateUI(this.savedTheme);
+            }
+            
+            applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme.mode);
+                document.documentElement.setAttribute('data-color', theme.color);
+                
+                // Save to memory (localStorage not available in sandbox)
+                this.currentTheme = theme;
+            }
+            
+            saveTheme(theme) {
+                // Store theme in memory (localStorage not available in sandbox)
+                this.savedTheme = theme;
+                this.currentTheme = theme;
+            }
+            
+            setupEventListeners() {
+                // Theme toggle
+                document.getElementById('themeToggle').addEventListener('click', () => {
+                    const currentMode = document.documentElement.getAttribute('data-theme') || 'light';
+                    const newMode = currentMode === 'light' ? 'dark' : 'light';
+                    const currentColor = document.documentElement.getAttribute('data-color') || 'green';
+                    
+                    const newTheme = { mode: newMode, color: currentColor };
+                    this.applyTheme(newTheme);
+                    this.saveTheme(newTheme);
+                    this.updateToggleIcon(newMode);
+                });
+                
+                // Color selectors
+                document.querySelectorAll('.theme-color').forEach(colorBtn => {
+                    colorBtn.addEventListener('click', () => {
+                        const newColor = colorBtn.getAttribute('data-color');
+                        const currentMode = document.documentElement.getAttribute('data-theme') || 'light';
+                        
+                        const newTheme = { mode: currentMode, color: newColor };
+                        this.applyTheme(newTheme);
+                        this.saveTheme(newTheme);
+                        this.updateColorSelectors(newColor);
+                    });
+                });
+            }
+            
+            updateUI(theme) {
+                this.updateToggleIcon(theme.mode);
+                this.updateColorSelectors(theme.color);
+            }
+            
+            updateToggleIcon(mode) {
+                const icon = document.querySelector('#themeToggle i');
+                icon.className = mode === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+            
+            updateColorSelectors(activeColor) {
+                document.querySelectorAll('.theme-color').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-color') === activeColor) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Progress bar animations
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => {
+                            bar.style.width = width + '%';
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('#skills').forEach(section => {
+            progressObserver.observe(section);
+        });
+        
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Create mailto link
+            const mailtoLink = `mailto:vasanthan2507@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+                `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+            )}`;
+            
+            // Open default email client
+            window.open(mailtoLink);
+            
+            // Show success message
+            alert('Thank you for your message! Your default email client should now open with the composed message.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Download functions
+function downloadResume() {
+    const confirmDownload = confirm("Do you want to download the resume?");
+    if (confirmDownload) {
+        const link = document.createElement('a');
+        link.href = 'VasanthanResume.pdf';
+        link.download = 'VasanthanResume.pdf';
+        link.click();
+    } else {
+        alert("Download canceled.");
+    }
+}
+
+        
+        function downloadSourceCode() {
+            // Create a simple source code package info
+            const sourceInfo = `
+=== Portfolio Source Code ===
+
+This portfolio is built with:
+- HTML5
+- CSS3 (Custom Properties for theming)
+- Bootstrap 5.3.0
+- Vanilla JavaScript
+- Font Awesome Icons
+- Google Fonts (Inter & JetBrains Mono)
+
+Features:
+- Responsive design for all devices
+- Multiple color themes (Green, Purple, Blue, Brown, Orange)
+- Light/Dark mode toggle
+- Smooth scrolling navigation
+- Animated progress bars
+- Contact form with mailto integration
+- Modern card-based layout
+- Professional typography
+
+To use this code:
+1. Save the HTML as index.html
+2. Ensure you have an internet connection for CDN resources
+3. Replace image.jpg with your profile picture
+4. Customize the content with your information
+5. Deploy to any web hosting service
+
+The code is fully self-contained and ready for deployment!
+            `;
+            
+            // Create a downloadable text file with instructions
+            const blob = new Blob([sourceInfo], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'portfolio-source-info.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Source code information downloaded! The complete HTML source can be saved using your browser\'s "Save Page As" feature.');
+        }
+        
+        // Initialize theme manager
+        document.addEventListener('DOMContentLoaded', () => {
+            new ThemeManager();
+        });
+        
+        // Add active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Mobile navigation close on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
