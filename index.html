@@ -1,79 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vasanthan - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Italianno&display=swap"
+    rel="stylesheet">
     <style>
         :root {
-            /* Green Theme (Default) */
-            --primary-color: #10B981;
-            --primary-dark: #047857;
-            --primary-light: #6EE7B7;
-            --secondary-color: #F0FDF4;
-            --accent-color: #34D399;
-            --text-primary: #111827;
-            --text-secondary: #6B7280;
-            --bg-primary: #FFFFFF;
-            --bg-secondary: #F9FAFB;
-            --bg-card: #FFFFFF;
-            --border-color: #E5E7EB;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        /* Dark Mode Variables
-        [data-theme="dark"]{
-            --text-primary: #F9FAFB;
-            --text-secondary: #D1D5DB;
-            --bg-primary: #111827;
-            --bg-secondary: #1F2937;
-            --bg-card: #1F2937;
-            --border-color: #374151;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            --font-color: white;
-        }
-
-        /* Purple Theme */
-        /* [data-color="purple"] {
+            /* Cosmic Theme (Light Mode Base - cleaner, airy) */
             --primary-color: #8B5CF6;
+            /* Violet 500 */
             --primary-dark: #7C3AED;
-            --primary-light: #C4B5FD;
-            --secondary-color: #FAF5FF;
-            --accent-color: #A78BFA;
+            /* Violet 600 */
+            --primary-light: #A78BFA;
+            /* Violet 400 */
+            --secondary-color: #06B6D4;
+            /* Cyan 500 */
+            --accent-color: #F472B6;
+            /* Pink 400 */
+
+            --text-primary: #1E293B;
+            --text-secondary: #475569;
+
+            --bg-primary: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --bg-card: rgba(255, 255, 255, 0.7);
+
+            --border-color: rgba(148, 163, 184, 0.2);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+
+            --shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.1);
+            --glow: 0 0 20px rgba(139, 92, 246, 0.3);
         }
 
-        /* Blue Theme */
-        /* [data-color="blue"] {
-            --primary-color: #3B82F6;
-            --primary-dark: #2563EB;
-            --primary-light: #93C5FD;
-            --secondary-color: #EFF6FF;
-            --accent-color: #60A5FA;
-        } */
+        [data-theme="dark"] {
+            /* Cosmic Theme (Dark Mode - The Star Show) */
+            --primary-color: #A78BFA;
+            /* Violet 400 */
+            --primary-dark: #8B5CF6;
+            /* Violet 500 */
+            --secondary-color: #22D3EE;
+            /* Cyan 400 */
 
-        /* Brown Theme */
-        /* [data-color="brown"] {
-            --primary-color: #92400E;
-            --primary-dark: #78350F;
-            --primary-light: #FCD34D;
-            --secondary-color: #FFFBEB;
-            --accent-color: #D97706;
-        } */
+            --text-primary: #F8FAFC;
+            /* Slate 50 */
+            --text-secondary: #E2E8F0;
+            /* Slate 200 - Significantly brighter */
 
-        /* Orange Theme */
-        /* [data-color="orange"] {
-            --primary-color: #EA580C;
-            --primary-dark: #C2410C;
-            --primary-light: #FED7AA;
-            --secondary-color: #FFF7ED;
-            --accent-color: #FB923C;
-        } */
+            --bg-primary: #0F172A;
+            --bg-secondary: #020617;
+            --bg-card: rgba(15, 23, 42, 0.95);
+            /* Nearly solid for max contrast */
+            /* Slate 800 with opacity */
+
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 20px 50px -12px rgba(139, 92, 246, 0.25);
+            --glow: 0 0 25px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Force lighter text in dark mode for common elements */
+        [data-theme="dark"] body,
+        [data-theme="dark"] p,
+        [data-theme="dark"] h1,
+        [data-theme="dark"] h2,
+        [data-theme="dark"] h3,
+        [data-theme="dark"] h4,
+        [data-theme="dark"] h5,
+        [data-theme="dark"] h6,
+        [data-theme="dark"] li,
+        [data-theme="dark"] span {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Add subtle mesh gradient to reduce "empty" feel in dark mode */
+        [data-theme="dark"] body {
+            background:
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background-attachment: fixed;
+        }
 
         /* Base Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -82,22 +110,48 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
+            background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: var(--text-primary);
             line-height: 1.6;
             transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Glassmorphism Utility */
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: var(--glass-border);
+            box-shadow: var(--shadow);
         }
 
         /* Navigation */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         [data-theme="dark"] .navbar {
-            background: rgba(17, 24, 39, 0.95);
+            background: rgba(17, 24, 39, 0.8);
         }
 
         .navbar-brand {
@@ -118,57 +172,15 @@
             transform: translateY(-1px);
         }
 
-        /* Theme Controls */
-        .theme-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .theme-selector {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .theme-color {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .theme-color:hover {
-            transform: scale(1.1);
-        }
-
-        .theme-color.active {
-            border-color: var(--text-primary);
-            transform: scale(1.2);
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.5rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            background: var(--secondary-color);
-            transform: rotate(180deg);
-        }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-primary) 100%);
             padding: 100px 0;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
         }
 
         .hero::before {
@@ -178,7 +190,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23000" opacity="0.03"/><circle cx="80" cy="80" r="1" fill="%23000" opacity="0.03"/><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.03"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            background-image: radial-gradient(circle at 1px 1px, var(--border-color) 1px, transparent 0);
+            background-size: 40px 40px;
+            opacity: 0.5;
             z-index: 1;
         }
 
@@ -187,22 +201,29 @@
             z-index: 2;
         }
 
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             border: 5px solid var(--primary-color);
             box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
+            object-fit: cover;
         }
 
         .profile-img:hover {
-            transform: scale(1.05) rotate(5deg);
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 0 30px var(--primary-color);
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 800;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             -webkit-background-clip: text;
@@ -216,89 +237,91 @@
             margin-bottom: 2rem;
         }
 
-        /* Cards */
+        /* Cards - Now Glassy */
         .card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: var(--glass-border);
+            color: var(--text-primary);
+            border-radius: 20px;
+            /* Rounder */
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-header {
-            background: var(--secondary-color);
-            border-bottom: 1px solid var(--border-color);
-            font-weight: 600;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
+        /* Glow Effect on Hover */
+        .card::after {
+            content: "";
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            border-radius: 2px;
+            inset: -1px;
+            z-index: -1;
+            border-radius: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        /* Skills */
-        .skill-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
+        .card:hover::after {
+            opacity: 0.4;
+            filter: blur(10px);
         }
 
-        .skill-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
+
+
+        /* Time Greeting Panel */
+        #time-greeting-panel {
+            position: fixed;
+            top: 80px;
+            /* Below Navbar */
+            right: 20px;
+            padding: 10px 25px;
+            border-radius: 30px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 1s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .skill-icon {
+        #time-greeting-text {
+            font-family: 'Italianno', cursive;
             font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+            line-height: 1;
+            color: var(--text-primary);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .progress {
-            height: 10px;
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-            overflow: hidden;
+        /* Ensure specific elements in cards inherit or use correct color */
+        .card-body,
+        .card-text,
+        .lead,
+        .list-group-item,
+        .list-group-item strong {
+            color: inherit !important;
         }
 
-        .progress-bar {
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            transition: width 1s ease;
+        /* Explicitly fix li elements in dark mode just in case */
+        [data-theme="dark"] .list-group-item {
+            color: var(--text-primary) !important;
+            background-color: transparent !important;
+            /* Ensure transparent background for list items */
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         /* Projects */
         .project-card {
-            position: relative;
-            overflow: hidden;
+            height: 100%;
         }
 
         .project-overlay {
@@ -307,221 +330,36 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(52, 211, 153, 0.9));
+            background: rgba(0, 0, 0, 0.8);
             opacity: 0;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
         }
 
         .project-card:hover .project-overlay {
             opacity: 1;
         }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
         .tech-tag {
             background: var(--primary-color);
             color: white;
             padding: 0.25rem 0.75rem;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary-color);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-left: 60px;
-            margin-bottom: 2rem;
-        }
-
-        .timeline-icon {
-            position: absolute;
-            left: -45px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        /* Contact */
-        .contact-info {
-            background: var(--secondary-color);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.5rem;
-        }
-
-        .social-link:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            color: white;
-        }
-
-        /* Buttons */
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border: none;
-            border-radius: 25px;
-            padding: 0.75rem 2rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline-primary {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
-            border-radius: 25px;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-primary:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        /* Responsive 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .timeline::before {
-                left: 15px;
-            }
-            
-            .timeline-item {
-                margin-left: 45px;
-            }
-            
-            .timeline-icon {
-                left: -30px;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .timeline::before {
-                left: 15px;
-            }
-            
-            .timeline-item {
-                margin-left: 45px;
-            }
-            
-            .timeline-icon {
-                left: -30px;
-            }
-        }
-
-/* Additional Mobile Fix for Hero Section */
-@media (max-width: 768px) {
-    .hero .row {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-
-    .hero .col-lg-6 {
-        width: 100%;
-    }
-
-    .hero .profile-img {
-        margin: 2rem auto 0 auto;
-        display: block;
-    }
-
-    .hero .d-flex {
-        justify-content: center;
-    }
-
-    .hero-content {
-        margin-top: 1rem;
-    }
-}
 
         /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: all 0.8s ease;
         }
 
         .fade-in.visible {
@@ -529,98 +367,192 @@
             transform: translateY(0);
         }
 
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
+        /* Button Enhancements */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        } */
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -10px var(--primary-dark);
+        }
+
+        /* Timeline Enhancements */
+        .timeline-icon {
+            box-shadow: 0 0 0 5px var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero .d-flex {
+                justify-content: center;
+            }
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            /* Cleaner dark gradient */
+        }
+
+        [data-theme="dark"] .hero::before {
+            opacity: 0.1;
+            /* Reduce pattern opacity in dark mode */
+        }
+
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            font-size: 1.2rem;
+            border: none;
+            outline: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #scrollTopBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form Visibility Fixes */
+        .form-control {
+            color: var(--text-primary) !important;
+        }
+
+        .form-control::placeholder {
+            color: var(--text-secondary) !important;
+            opacity: 0.7;
+        }
+
+        /* Fix background returning to white on focus */
+        .form-control:focus {
+            color: var(--text-primary) !important;
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--primary-color) !important;
+            box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
+        }
+
+        /* Fix Autofill causing white background */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px var(--bg-secondary) inset !important;
+            -webkit-text-fill-color: var(--text-primary) !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
     </style>
 </head>
+
 <body>
+    <!-- Time Greeting Panel -->
+    <div id="time-greeting-panel">
+        <div id="time-greeting-text">Good Morning</div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <i class="fas fa-code"></i> Vasanthan
+                <i class="fas fa-code" href="index.html"></i> Vasanthan
             </a>
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#certifications">Certifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
-                
                 <div class="theme-controls">
-                    <!-- <div class="theme-selector">
-                        <div class="theme-color" data-color="green" style="background: #10B981;" title="Green Theme"></div>
-                        <div class="theme-color" data-color="purple" style="background: #8B5CF6;" title="Purple Theme"></div>
-                        <div class="theme-color" data-color="blue" style="background: #3B82F6;" title="Blue Theme"></div>
-                        <div class="theme-color" data-color="brown" style="background: #92400E;" title="Brown Theme"></div>
-                        <div class="theme-color" data-color="orange" style="background: #EA580C;" title="Orange Theme"></div>
-                    </div> -->
-                    <!-- <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode"
+                        style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--text-primary);">
                         <i class="fas fa-moon"></i>
-                    </button> -->
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero text-center">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <div class="fade-in">
-                        <h1 class="hero-title">Vasanthan</h1>
-                        <p class="hero-subtitle">Full Stack Developer &amp; IT Professional</p>
-                         <p class="lead mb-4">Passionate about delivering high-quality solutions and driving innovation through code. Skilled in Python development with a growing focus on Data Analysis and Machine Learning.</p>
-
-                        <div class="d-flex gap-3 flex-wrap">
-                            <a href="#contact" class="btn btn-primary">
-                                <i class="fas fa-envelope me-2"></i>Get In Touch
-                            </a>
-                            <button class="btn btn-outline-primary" onclick="downloadResume()">
-                                <i class="fas fa-download me-2"></i>Download CV
-                            </button>
-                        </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 fade-in">
+                    <!-- Profile Image Centered -->
+                    <div class="mb-4">
+                        <img src="image.png" alt="Vasanthan" class="profile-img img-fluid"
+                            onerror="this.src='https://via.placeholder.com/250';">
                     </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <div class="fade-in">
-                        <img src="image.png" alt="Vasanthan" class="profile-img img-fluid" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <!-- <div style="display:none; width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;"> -->
-                            <!-- <i class="fas fa-user"></i> -->
-                        </div>
+
+                    <h1 class="hero-title fade-in mb-3">Vasanthan V</h1>
+                    <p class="hero-subtitle fade-in mb-4" style="min-height: 1.6em;">
+                        <span id="typing-text" style="color: var(--secondary-color); font-weight: 600;"></span><span
+                            class="cursor">|</span>
+                    </p>
+
+                    <div class="col-lg-8 mx-auto">
+                        <p class="lead mb-5">Passionate about delivering high-quality solutions and driving
+                            innovation
+                            through code. Skilled in Python development with a growing focus on Data Analysis
+                            and
+                            Machine Learning.</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                        <button class="btn btn-outline-primary" onclick="downloadResume()" style="border-radius: 50px;">
+                            <i class="fas fa-download me-2"></i>Download CV
+                        </button>
                     </div>
                 </div>
             </div>
@@ -628,37 +560,70 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section py-5">
         <div class="container">
-            <h2 class="section-title fade-in">About Me</h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="card fade-in">
-                        <div class="card-body p-4">
-                            <p class="lead" style="text-align: justify;">
-                                    
-                                    A passionate <strong>Python Developer and Data Enthusiast</strong> with a keen interest in <strong>Machine Learning, Data Analysis, and AI-driven solutions</strong>. I love transforming raw data into meaningful insights and building intelligent systems that help solve real-world problems.
-                                    With strong foundations in <strong>Python, Django, and SQL</strong>, I have developed projects involving <strong>data visualization, predictive modeling, and automation</strong>. Iâ€™m always eager to learn new technologies, experiment with datasets, and contribute to impactful, data-centric applications.                     
-                                    Currently pursuing my <strong>MCA</strong> at <strong>Sri Manakula Vinayagar Engineering College</strong>, I aim to grow into a <strong>Data Analyst / Machine Learning Engineer</strong> where I can apply analytical thinking and coding skills to deliver data-driven solutions.
-                                </p>
+            <h2 class="text-center fw-bold mb-5 fade-in" style="font-size: 2.5rem;">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card fade-in mb-5">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <p class="lead mb-4 ps-3 pe-3" style="line-height: 1.8; text-align: justify;">
+                                        A passionate <strong>Python Developer and Data Enthusiast</strong> with
+                                        a keen
+                                        interest in <strong>Machine Learning, Data Analysis, and AI-driven
+                                            solutions</strong>. I love transforming raw data into meaningful
+                                        insights
+                                        and building intelligent systems that help solve real-world problems.
+                                    </p>
+                                    <p class="mb-4 text-muted ps-3 pe-3" style="text-align: justify;">
+                                        With strong foundations in <strong>Python, Django, and SQL</strong>, I
+                                        have
+                                        developed
+                                        projects involving <strong>data visualization, predictive modeling, and
+                                            automation</strong>. I’m always eager to learn new technologies,
+                                        experiment
+                                        with
+                                        datasets, and contribute to impactful, data-centric applications.
+                                    </p>
+                                    <p class="mb-5 ps-3 pe-3" style="text-align: justify;">
+                                        Currently pursuing my <strong>MCA</strong> at <strong>Sri Manakula
+                                            Vinayagar
+                                            Engineering
+                                            College</strong>, I aim to grow into a <strong>Data Analyst /
+                                            Machine
+                                            Learning
+                                            Engineer</strong> where I can apply analytical thinking and coding
+                                        skills to
+                                        deliver
+                                        data-driven solutions.
+                                    </p>
+                                </div>
+                            </div>
 
-                            <div class="row mt-4">
-                                <div class="col-md-6">
-                                    <h5><i class="fas fa-info-circle me-2 text-primary"></i>Personal Details</h5>
+                            <hr class="my-4">
+
+                            <div class="row mt-4 justify-content-center">
+                                <div class="col-md-5 mb-4 mb-md-0">
+                                    <h5 class="mb-3 border-bottom pb-2 d-inline-block"><i
+                                            class="fas fa-info-circle me-2 text-primary"></i>Personal Details
+                                    </h5>
                                     <ul class="list-unstyled">
-                                        <li><strong>Date of Birth:</strong> 25/07/2003</li>
-                                        <li><strong>Location:</strong> Cuddalore, India</li>
-                                        <li><strong>Languages:</strong> English, Tamil</li>
+                                        <li class="mb-2"><strong>Location: </strong><a
+                                                href="https://maps.app.goo.gl/2mYHdjoTmbShxdqWA"
+                                                target="_blank">Cuddalore, India</a></li>
+                                        <li class="mb-2"><strong>Languages:</strong> English, Tamil</li>
                                         <li><strong>Interests:</strong> Books, Music</li>
                                     </ul>
                                 </div>
-                                <div class="col-md-6">
-                                    <h5><i class="fas fa-bullseye me-2 text-primary"></i>Focus Areas</h5>
+                                <div class="col-md-5">
+                                    <h5 class="mb-3 border-bottom pb-2 d-inline-block"><i
+                                            class="fas fa-bullseye me-2 text-primary"></i>Focus Areas</h5>
                                     <ul class="list-unstyled">
-                                        <li>â€¢ Full Stack Development</li>
-                                        <li>â€¢ Machine Learning Applications</li>
-                                        <li>â€¢ Database Design &amp; Optimization</li>
-                                        <li>â€¢ Collaborative Team Projects</li>
+                                        <li class="mb-2">• Full Stack Development</li>
+                                        <li class="mb-2">• Machine Learning Applications</li>
+                                        <li>• Database Design &amp; Optimization</li>
                                     </ul>
                                 </div>
                             </div>
@@ -666,61 +631,82 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Education Timeline -->
             <div class="mt-5">
                 <h3 class="text-center mb-4 fade-in">Education</h3>
-                <div class="timeline fade-in">
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
+                <div class="timeline fade-in"
+                    style="position: relative; border-left: 3px solid var(--primary-color); margin-left: 20px; padding-left: 30px;">
+                    <div class="timeline-item mb-4 position-relative">
+                        <div class="timeline-icon"
+                            style="position: absolute; left: -46px; top: 0; width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">MCA (Autonomous Institution)</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Sri Manakula Vinayagar Engineering College, Madagadipet</h6>
-                                <p class="card-text">Pondicherry University â€¢ 2024-26 â€¢ 90.05%</p>
+                        <a href="https://smvec.ac.in/" target="_blank" class="text-decoration-none text-reset">
+                            <div class="card h-100 hover-lift">
+                                <div class="card-body">
+                                    <h5 class="card-title">MCA (Autonomous Institution)</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Sri Manakula Vinayagar Engineering
+                                        College,
+                                        Madagadipet</h6>
+                                    <p class="card-text">Pondicherry University • 2024-26 • 90.05%</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
+
+                    <div class="timeline-item mb-4 position-relative">
+                        <div class="timeline-icon"
+                            style="position: absolute; left: -46px; top: 0; width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">BCA</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Raak Arts and Science College, Perambai</h6>
-                                <p class="card-text">Annamalai University â€¢ 2021-24 â€¢ 83.1%</p>
+                        <a href="https://raakasc.edu.in/" target="_blank" class="text-decoration-none text-reset">
+                            <div class="card h-100 hover-lift">
+                                <div class="card-body">
+                                    <h5 class="card-title">BCA</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Raak Arts and Science College,
+                                        Perambai
+                                    </h6>
+                                    <p class="card-text">Annamalai University • 2021-24 • 83.1%</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
+
+                    <div class="timeline-item mb-4 position-relative">
+                        <div class="timeline-icon"
+                            style="position: absolute; left: -46px; top: 0; width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-school"></i>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">HSC</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">SRK English Higher Secondary School, Karikalampakkam</h6>
-                                <p class="card-text">State Board â€¢ 2020-21 â€¢ 83%</p>
+                        <a href="https://srkschool.com/" target="_blank" class="text-decoration-none text-reset">
+                            <div class="card h-100 hover-lift">
+                                <div class="card-body">
+                                    <h5 class="card-title">HSC</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">SRK English Higher Secondary
+                                        School,
+                                        Karikalampakkam</h6>
+                                    <p class="card-text">State Board • 2020-21 • 85%</p> <!-- Updated to 85% -->
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
+
+                    <div class="timeline-item position-relative">
+                        <div class="timeline-icon"
+                            style="position: absolute; left: -46px; top: 0; width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-school"></i>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">SSLC</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">SRK English Higher Secondary School, Karikalampakkam</h6>
-                                <p class="card-text">State Board â€¢ 2018-19 â€¢ 73%</p>
+                        <a href="https://srkschool.com/" target="_blank" class="text-decoration-none text-reset">
+                            <div class="card h-100 hover-lift">
+                                <div class="card-body">
+                                    <h5 class="card-title">SSLC</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">SRK English Higher Secondary
+                                        School,
+                                        Karikalampakkam</h6>
+                                    <p class="card-text">State Board • 2018-19 • 73%</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -728,80 +714,78 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section" style="background: var(--bg-secondary);">
+    <section id="projects" class="section py-5" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2 class="section-title fade-in">Projects</h2>
+            <h2 class="text-center fw-bold mb-5 fade-in">Projects</h2>
             <div class="row g-4">
                 <!-- Project 1 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card project-card h-100 fade-in">
-                        <div class="card-body">
-                            <h5 class="card-title">Plagiarism Analyzer</h5>
-                            <p class="card-text">Django-based tool to detect and analyze plagiarism in text documents using Cosine Similarity algorithm and Google API integration.</p>
-                            <div class="tech-stack">
+                    <div class="card project-card fade-in">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Plagiarism Analyzer</h5>
+                            <p class="card-text flex-grow-1">Django-based tool to detect and analyze plagiarism
+                                in text
+                                documents using Cosine Similarity algorithm and Google API integration.</p>
+                            <div class="tech-stack mt-auto">
                                 <span class="tech-tag">Python</span>
                                 <span class="tech-tag">Django</span>
                                 <span class="tech-tag">SQLite</span>
-                                <span class="tech-tag">Google API</span>
                             </div>
                         </div>
                         <div class="project-overlay">
                             <h5 class="text-white mb-3">Key Features</h5>
-                            <ul class="text-white list-unstyled">
-                                <li>â€¢ Cosine Similarity Detection</li>
-                                <li>â€¢ Multi-format Support</li>
-                                <li>â€¢ Web Search Integration</li>
-                                <li>â€¢ Plagiarism Removal</li>
+                            <ul class="text-white list-unstyled text-center">
+                                <li>Cosine Similarity Detection</li>
+                                <li>Multi-format Support</li>
+                                <li>Web Search Integration</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
                 <!-- Project 2 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card project-card h-100 fade-in">
-                        <div class="card-body">
-                            <h5 class="card-title">Expense Tracker</h5>
-                            <p class="card-text">Responsive web platform for managing personal finances with secure authentication, budget alerts, and interactive charts.</p>
-                            <div class="tech-stack">
+                    <div class="card project-card fade-in">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Expense Tracker</h5>
+                            <p class="card-text flex-grow-1">Responsive web platform for managing personal
+                                finances with
+                                secure authentication, budget alerts, and interactive charts.</p>
+                            <div class="tech-stack mt-auto">
                                 <span class="tech-tag">Django</span>
                                 <span class="tech-tag">Bootstrap 5</span>
                                 <span class="tech-tag">Chart.js</span>
-                                <span class="tech-tag">JWT Auth</span>
                             </div>
                         </div>
                         <div class="project-overlay">
                             <h5 class="text-white mb-3">Key Features</h5>
-                            <ul class="text-white list-unstyled">
-                                <li>â€¢ Budget Tracking</li>
-                                <li>â€¢ Interactive Charts</li>
-                                <li>â€¢ Secure Authentication</li>
-                                <li>â€¢ Detailed Reports</li>
+                            <ul class="text-white list-unstyled text-center">
+                                <li>Budget Tracking</li>
+                                <li>Interactive Charts</li>
+                                <li>Secure Authentication</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
                 <!-- Project 3 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card project-card h-100 fade-in">
-                        <div class="card-body">
-                            <h5 class="card-title">Disease Prediction System</h5>
-                            <p class="card-text">ML-powered web application for disease prediction from symptoms with confidence scores and Aadhaar authentication.</p>
-                            <div class="tech-stack">
+                    <div class="card project-card fade-in">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Disease Prediction from System</h5>
+                            <p class="card-text flex-grow-1">ML-powered web application for disease prediction
+                                from
+                                symptoms with confidence scores and Aadhaar authentication.</p>
+                            <div class="tech-stack mt-auto">
                                 <span class="tech-tag">Python</span>
                                 <span class="tech-tag">Scikit-learn</span>
                                 <span class="tech-tag">Django</span>
-                                <span class="tech-tag">Bootstrap 5</span>
                             </div>
                         </div>
                         <div class="project-overlay">
                             <h5 class="text-white mb-3">Key Features</h5>
-                            <ul class="text-white list-unstyled">
-                                <li>â€¢ ML Predictions</li>
-                                <li>â€¢ Confidence Scoring</li>
-                                <li>â€¢ Secure Authentication</li>
-                                <li>â€¢ Report Export</li>
+                            <ul class="text-white list-unstyled text-center">
+                                <li>ML Predictions</li>
+                                <li>Confidence Scoring</li>
+                                <li>Secure Authentication</li>
                             </ul>
                         </div>
                     </div>
@@ -811,123 +795,77 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="skills" class="section py-5">
         <div class="container">
-            <h2 class="section-title fade-in">Technical Skills</h2>
-            
-            <!-- Programming Languages -->
-            <div class="mb-5">
-                <h4 class="mb-4 fade-in"><i class="fas fa-code me-2 text-primary"></i>Programming Languages</h4>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="skill-icon"><i class="fab fa-cuttlefish"></i></div>
-                            <h6>C Programming</h6>
-                            <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85"></div>
-                            </div>
-                            <small class="text-muted">85%</small>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="skill-icon"><i class="fab fa-python"></i></div>
-                            <h6>Python</h6>
-                            <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;" data-width="90"></div>
-                            </div>
-                            <small class="text-muted">90%</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Web Technologies -->
-            <div class="mb-5">
-                <h4 class="mb-4 fade-in"><i class="fas fa-globe me-2 text-primary"></i>Web Technologies</h4>
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <div class="skill-item fade-in">
-                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                            <h6>HTML5</h6>
-                            <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 90%;" data-width="90"></div>
-                            </div>
-                            <small class="text-muted">90%</small>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="skill-item fade-in">
-                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                            <h6>CSS3</h6>
-                            <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85"></div>
-                            </div>
-                            <small class="text-muted">85%</small>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="skill-item fade-in">
-                            <div class="skill-icon"><i class="fab fa-js-square"></i></div>
-                            <h6>JavaScript</h6>
-                            <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 80%;" data-width="80"></div>
-                            </div>
-                            <small class="text-muted">80%</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Frameworks & Tools -->
+            <h2 class="text-center fw-bold mb-5 fade-in">Technical Skills</h2>
             <div class="row g-4">
-                <div class="col-lg-6">
-                    <h4 class="mb-4 fade-in"><i class="fas fa-layer-group me-2 text-primary"></i>Frameworks &amp; Databases</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="skill-item fade-in">
-                                <div class="skill-icon"><i class="fab fa-python"></i></div>
-                                <h6>Django</h6>
-                                <div class="progress mt-3">
-                                    <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85"></div>
-                                </div>
-                                <small class="text-muted">85%</small>
-                            </div>
+                <!-- Programming Languages -->
+                <div class="col-md-6">
+                    <div class="card h-100 fade-in">
+                        <div class="card-header bg-transparent border-0">
+                            <h5 class="fw-bold"><i class="fas fa-code me-2 text-primary"></i>Programming</h5>
                         </div>
-                        <div class="col-md-6">
-                            <div class="skill-item fade-in">
-                                <div class="skill-icon"><i class="fas fa-database"></i></div>
-                                <h6>MySQL</h6>
-                                <div class="progress mt-3">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%;" data-width="80"></div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>Python</span>
+                                    <span>90%</span>
                                 </div>
-                                <small class="text-muted">80%</small>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%;" data-width="90">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>C Programming</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-6">
-                    <h4 class="mb-4 fade-in"><i class="fas fa-tools me-2 text-primary"></i>Tools &amp; Systems</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="skill-item fade-in">
-                                <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-                                <h6>Git</h6>
-                                <div class="progress mt-3">
-                                    <div class="progress-bar" role="progressbar" style="width: 75%;" data-width="75"></div>
-                                </div>
-                                <small class="text-muted">75%</small>
-                            </div>
+                <!-- Web Tech -->
+                <div class="col-md-6">
+                    <div class="card h-100 fade-in">
+                        <div class="card-header bg-transparent border-0">
+                            <h5 class="fw-bold"><i class="fas fa-globe me-2 text-primary"></i>Web Technologies
+                            </h5>
                         </div>
-                        <div class="col-md-6">
-                            <div class="skill-item fade-in">
-                                <div class="skill-icon"><i class="fab fa-linux"></i></div>
-                                <h6>Linux</h6>
-                                <div class="progress mt-3">
-                                    <div class="progress-bar" role="progressbar" style="width: 70%;" data-width="70"></div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>HTML5 & CSS3</span>
+                                    <span>90%</span>
                                 </div>
-                                <small class="text-muted">70%</small>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%;" data-width="90">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>JavaScript</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%;" data-width="80">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>Django</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%;" data-width="85">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -936,11 +874,10 @@
         </div>
     </section>
 
-    <!-- Certifications & Workshops -->
-    <section id="certifications" class="section" style="background: var(--bg-secondary);">
+    <!-- Certifications -->
+    <section id="certifications" class="section py-5" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2 class="section-title fade-in">Certifications &amp; Workshops</h2>
-            
+            <h2 class="text-center fw-bold mb-5 fade-in">Certifications & Workshops</h2>
             <div class="row g-4">
                 <div class="col-lg-6">
                     <div class="card h-100 fade-in">
@@ -948,107 +885,62 @@
                             <h4><i class="fas fa-certificate me-2 text-primary"></i>Certifications</h4>
                         </div>
                         <div class="card-body">
-                            <div class="list-group list-group-flush">
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">Networking</h6>
-                                        <small class="text-muted">Cisco</small>
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">Certified</span>
-                                </div>
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">ML Basics</h6>
-                                        <small class="text-muted">Infosys Springboard</small>
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">Certified</span>
-                                </div>
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">Power BI</h6>
-                                        <small class="text-muted">Udemy</small>
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">Certified</span>
-                                </div>
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">Front End Development</h6>
-                                        <small class="text-muted">Udemy</small>
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">Certified</span>
-                                </div>
-                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent p-0">
+                                    <a href="cisco.pdf" target="_blank"
+                                        class="d-flex justify-content-between align-items-center w-100 p-3 text-decoration-none text-reset">
+                                        <div>
+                                            <strong>Networking Foundation</strong><br><small
+                                                class="text-muted">Cisco</small>
+                                        </div>
+                                        <span class="badge bg-primary rounded-pill"><i
+                                                class="fas fa-external-link-alt"></i></span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item bg-transparent p-0">
+                                    <a href="PowerBI.pdf" target="_blank"
+                                        class="d-flex justify-content-between align-items-center w-100 p-3 text-decoration-none text-reset">
+                                        <div>
+                                            <strong>Power BI</strong><br><small class="text-muted">Udemy</small>
+                                        </div>
+                                        <span class="badge bg-primary rounded-pill"><i
+                                                class="fas fa-external-link-alt"></i></span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item bg-transparent p-0">
+                                    <a href="Front-end.pdf" target="_blank"
+                                        class="d-flex justify-content-between align-items-center w-100 p-3 text-decoration-none text-reset">
+                                        <div>
+                                            <strong>Front-end Development</strong><br><small
+                                                class="text-muted">Udemy</small>
+                                        </div>
+                                        <span class="badge bg-primary rounded-pill"><i
+                                                class="fas fa-external-link-alt"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                
                 <div class="col-lg-6">
                     <div class="card h-100 fade-in">
                         <div class="card-header">
                             <h4><i class="fas fa-chalkboard-teacher me-2 text-primary"></i>Workshops</h4>
                         </div>
                         <div class="card-body">
-                            <div class="list-group list-group-flush">
-                                <div class="list-group-item">
-                                    <h6 class="mb-1">Ethical Hacking</h6>
-                                    <small class="text-muted">E.S Arts and Science College, Villupuram</small>
-                                </div>
-                                <div class="list-group-item">
-                                    <h6 class="mb-1">Python Programming</h6>
-                                    <small class="text-muted">RAAK Arts and Science College, Perambai</small>
-                                </div>
-                                <div class="list-group-item">
-                                    <h6 class="mb-1">Drone Technology</h6>
-                                    <small class="text-muted">Pondicherry Technology University, Kalapet</small>
-                                </div>
-                                <div class="list-group-item">
-                                    <h6 class="mb-1">Digital Transformation in Manufacturing</h6>
-                                    <small class="text-muted">Sri Manakula Vinayagar Engineering College</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Achievements & Extracurricular -->
-            <div class="mt-5">
-                <h3 class="text-center mb-4 fade-in">Achievements &amp; Extracurricular</h3>
-                <div class="row g-4">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="card fade-in">
-                            <div class="card-body">
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <div class="text-center">
-                                            <div class="skill-icon"><i class="fas fa-trophy"></i></div>
-                                            <h6>Coding Contests</h6>
-                                            <p class="text-muted">Participated in debugging and coding competitions</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="text-center">
-                                            <div class="skill-icon"><i class="fas fa-users"></i></div>
-                                            <h6>Peer Mentoring</h6>
-                                            <p class="text-muted">Active in project teamwork and mentoring</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="text-center">
-                                            <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-                                            <h6>Career Growth</h6>
-                                            <p class="text-muted">Focused on discipline and professional development</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="text-center">
-                                            <div class="skill-icon"><i class="fas fa-signal"></i></div>
-                                            <h6>Morse Code</h6>
-                                            <p class="text-muted">Practice and study of communication systems</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent"><strong>Ethical Hacking</strong> -
+                                    E.S Arts
+                                    and Science College</li>
+                                <li class="list-group-item bg-transparent"><strong>Python Programming</strong> -
+                                    RAAK
+                                    Arts and Science College</li>
+                                <li class="list-group-item bg-transparent"><strong>Drone Technology</strong> -
+                                    Pondicherry Technology University</li>
+                                <li class="list-group-item bg-transparent"><strong>Digital
+                                        Transformation</strong> - Sri
+                                    Manakula Vinayagar Engineering College</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1057,95 +949,131 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section py-5">
         <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="contact-info fade-in">
-                        <h4 class="mb-4">Contact Information</h4>
-                        <div class="mb-3">
-                            <h6><i class="fas fa-envelope me-2 text-primary"></i>Email</h6>
-                            <a href="mailto:vasanthan2507@gmail.com" class="text-decoration-none">vasanthan2507@gmail.com</a>
-                        </div>
-                        <div class="mb-3">
-                            <h6><i class="fas fa-phone me-2 text-primary"></i>Phone</h6>
-                            <a href="tel:+919150432205" class="text-decoration-none">+91 9150432205</a>
-                        </div>
-                        <div class="mb-3">
-                            <h6><i class="fas fa-map-marker-alt me-2 text-primary"></i>Location</h6>
-                            <span>Cuddalore, India</span>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="mailto:vasanthan2507@gmail.com" class="social-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/vasanthanvijayan-dev" class="social-link" target="_blank" title="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://github.com/vasanthan2507" class="social-link" target="_blank" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="card fade-in">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">Send Message</h5>
-                                <form
-                                action="https://formspree.io/f/manlpzoq"
-                                method="POST"
-                                class="fade-in"
-                                >
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+            <h2 class="text-center fw-bold mb-5 fade-in">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="card overflow-hidden shadow-lg fade-in">
+                        <div class="row g-0">
+                            <!-- Contact Info Column -->
+                            <div class="col-lg-5 p-5 d-flex flex-column justify-content-between"
+                                style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white;">
+                                <div>
+                                    <h3 class="fw-bold mb-4 text-white">Contact Information</h3>
+                                    <p class="mb-5 text-white-50">I'm always open to discussing new projects,
+                                        creative
+                                        ideas or opportunities to be part of your visions.</p>
+
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="me-3" style="width: 40px; text-align: center;"><i
+                                                class="fas fa-envelope fa-lg"></i></div>
+                                        <div>
+                                            <div class="small text-white-50">Email</div>
+                                            <a href="mailto:vasanthan2507@gmail.com"
+                                                class="text-white text-decoration-none fw-bold">vasanthan2507@gmail.com</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="me-3" style="width: 40px; text-align: center;"><i
+                                                class="fas fa-phone fa-lg"></i></div>
+                                        <div>
+                                            <div class="small text-white-50">Phone</div>
+                                            <a href="tel:+919150432205"
+                                                class="text-white text-decoration-none fw-bold">+91
+                                                9150432205</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-5">
+                                        <div class="me-3" style="width: 40px; text-align: center;"><i
+                                                class="fas fa-map-marker-alt fa-lg"></i></div>
+                                        <div>
+                                            <div class="small text-white-50">Location</div>
+                                            <div class="fw-bold">Cuddalore, India</div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="social-links-light d-flex gap-3">
+                                    <a href="mailto:vasanthan2507@gmail.com"
+                                        class="btn btn-outline-light rounded-circle"
+                                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"><i
+                                            class="fas fa-envelope"></i></a>
+                                    <a href="https://linkedin.com/in/vasanthanvijayan-dev"
+                                        class="btn btn-outline-light rounded-circle"
+                                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"
+                                        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://github.com/vasanthan2507"
+                                        class="btn btn-outline-light rounded-circle"
+                                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"
+                                        target="_blank"><i class="fab fa-github"></i></a>
                                 </div>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="subject" class="form-label">Subject</label>
-                                    <input type="text" class="form-control" id="subject" name="subject" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary w-100">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
+                            <!-- Contact Form Column -->
+                            <div class="col-lg-7 p-5 bg-card">
+                                <h3 class="fw-bold mb-4">Send Message</h3>
+                                <form action="https://formspree.io/f/manlpzoq" method="POST">
+                                    <div class="mb-4">
+                                        <label for="name" class="form-label text-muted small fw-bold">NAME</label>
+                                        <input type="text" class="form-control form-control-lg fs-6" id="name"
+                                            name="name" placeholder="John Doe"
+                                            style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);"
+                                            required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label text-muted small fw-bold">EMAIL</label>
+                                        <input type="email" class="form-control form-control-lg fs-6" id="email"
+                                            name="email" placeholder="john@example.com"
+                                            style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);"
+                                            required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="subject" class="form-label text-muted small fw-bold">SUBJECT</label>
+                                        <input type="text" class="form-control form-control-lg fs-6" id="subject"
+                                            name="subject" placeholder="Project Discussion"
+                                            style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);"
+                                            required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="message" class="form-label text-muted small fw-bold">MESSAGE</label>
+                                        <textarea class="form-control form-control-lg fs-6" id="message" name="message"
+                                            rows="4" placeholder="Write your message here..."
+                                            style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);"
+                                            required></textarea>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary py-3">
+                                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                                        </button>
+                                    </div>
                                 </form>
-
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Download Section -->
-            <div class="row mt-5">
-                <div class="col-12 text-center">
+
+            <!-- Download Section (Restored) -->
+            <div class="row mt-5 justify-content-center">
+                <div class="col-xl-10">
                     <div class="card fade-in">
-                        <div class="card-body py-4">
-                            <h5 class="mb-4"><i class="fas fa-download me-2 text-primary"></i>Download Assets</h5>
+                        <div class="card-body py-4 text-center">
+                            <h5 class="mb-4 fw-bold"><i class="fas fa-download me-2 text-primary"></i>Download
+                                Assets
+                            </h5>
                             <div class="d-flex justify-content-center gap-3 flex-wrap">
                                 <button class="btn btn-primary" onclick="downloadResume()">
                                     <i class="fas fa-file-pdf me-2"></i>Download Resume
                                 </button>
                                 <button class="btn btn-outline-primary" onclick="downloadSourceCode()">
-                                    <i class="fas fa-code me-2"></i>Download Source Code
+                                    <!-- Assumes function exists or will be added if missing -->
+                                    <i class="fas fa-code me-2"></i>Download Source
+                                    Code
                                 </button>
                             </div>
-                            <p class="text-muted mt-3 mb-0">Get my latest resume or download the complete source code of this portfolio website.</p>
                         </div>
                     </div>
                 </div>
@@ -1154,273 +1082,301 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer py-4 text-center"
+        style="background: var(--bg-secondary); border-top: 1px solid var(--border-color);">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p>&copy; 2025 Vasanthan. All rights reserved.</p>
-                    <p class="text-muted">Built with Bootstrap 5 &amp; modern web technologies</p>
-                </div>
-            </div>
+            <p class="mb-0">&copy; 2026 Vasanthan. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scroll to Top Button -->
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <!-- (Navigation and other sections remain unchanged...) -->
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="statusModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg"
+                style="background: var(--bg-card); color: var(--text-primary);">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-4">
+                        <div
+                            style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="fas fa-check-circle fa-3x text-primary"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-3" id="modalTitle">Success!</h3>
+                    <p class="text-muted mb-4" id="modalMessage">Action completed successfully.</p>
+                    <button type="button" class="btn btn-primary px-5 py-2 rounded-pill"
+                        data-bs-dismiss="modal">Awesome</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg"
+                style="background: var(--bg-card); color: var(--text-primary);">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-4">
+                        <div
+                            style="width: 80px; height: 80px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="fas fa-question fa-3x text-primary"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-3" id="confirmTitle">Are you sure?</h3>
+                    <p class="text-muted mb-4" id="confirmMessage">Do you want to proceed?</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="btn btn-outline-secondary px-4 py-2 rounded-pill"
+                            data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary px-4 py-2 rounded-pill" id="confirmBtn">Yes,
+                            Proceed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <!-- (Navigation and other sections remain unchanged...) -->
+
+    <!-- ... (Previous Content) ... -->
+
+    <!-- ... (Scripts) ... -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Theme Management
-        class ThemeManager {
-            constructor() {
-                this.init();
-            }
-            
-            init() {
-                // Use in-memory storage for theme preferences
-                this.savedTheme = this.savedTheme || {
-                    mode: 'light',
-                    color: 'green'
-                };
-                
-                this.applyTheme(this.savedTheme);
-                this.setupEventListeners();
-                this.updateUI(this.savedTheme);
-            }
-            
-            applyTheme(theme) {
-                document.documentElement.setAttribute('data-theme', theme.mode);
-                document.documentElement.setAttribute('data-color', theme.color);
-                
-                // Save to memory (localStorage not available in sandbox)
-                this.currentTheme = theme;
-            }
-            
-            saveTheme(theme) {
-                // Store theme in memory (localStorage not available in sandbox)
-                this.savedTheme = theme;
-                this.currentTheme = theme;
-            }
-            
-            setupEventListeners() {
-                // Theme toggle
-                document.getElementById('themeToggle').addEventListener('click', () => {
-                    const currentMode = document.documentElement.getAttribute('data-theme') || 'light';
-                    const newMode = currentMode === 'light' ? 'dark' : 'light';
-                    const currentColor = document.documentElement.getAttribute('data-color') || 'green';
-                    
-                    const newTheme = { mode: newMode, color: currentColor };
-                    this.applyTheme(newTheme);
-                    this.saveTheme(newTheme);
-                    this.updateToggleIcon(newMode);
-                });
-                
-                // Color selectors
-                document.querySelectorAll('.theme-color').forEach(colorBtn => {
-                    colorBtn.addEventListener('click', () => {
-                        const newColor = colorBtn.getAttribute('data-color');
-                        const currentMode = document.documentElement.getAttribute('data-theme') || 'light';
-                        
-                        const newTheme = { mode: currentMode, color: newColor };
-                        this.applyTheme(newTheme);
-                        this.saveTheme(newTheme);
-                        this.updateColorSelectors(newColor);
-                    });
-                });
-            }
-            
-            updateUI(theme) {
-                this.updateToggleIcon(theme.mode);
-                this.updateColorSelectors(theme.color);
-            }
-            
-            updateToggleIcon(mode) {
-                const icon = document.querySelector('#themeToggle i');
-                icon.className = mode === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-            }
-            
-            updateColorSelectors(activeColor) {
-                document.querySelectorAll('.theme-color').forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-color') === activeColor) {
-                        btn.classList.add('active');
-                    }
-                });
+        // Scroll to Top Functionality
+        const mybutton = document.getElementById("scrollTopBtn");
+
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                mybutton.style.display = "flex";
+            } else {
+                mybutton.style.display = "none";
             }
         }
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+
+
+        // Theme Management
+        // ... (Theme code remains same) ...
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Typing Effect
+        const texts = ["Full Stack Developer", "Data Analyst", "Python Expert", "Machine Learning Enthusiast"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            const typingElement = document.getElementById("typing-text");
+            if (typingElement) {
+                typingElement.textContent = letter;
+            }
+
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Wait before clearing
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+
+        // 3D Card Tilt Effect
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -5; // Max 5 deg rotation
+                const rotateY = ((x - centerX) / centerX) * 5;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Clear inline style to allow CSS to take over or reset to default
+                card.style.transform = '';
             });
         });
-        
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
+
+
+
+        // Time Greeting & Color Tune Logic
+        function updateTimeGreeting() {
+            const now = new Date();
+            const hours = now.getHours();
+            const greetingElement = document.getElementById('time-greeting-text');
+            const panelElement = document.getElementById('time-greeting-panel');
+
+            let greeting = "Good Morning";
+            let panelColor = "rgba(255, 200, 100, 0.2)"; // Morning Warmth
+            let borderColor = "rgba(255, 165, 0, 0.4)";
+
+            if (hours >= 12 && hours < 17) {
+                greeting = "Good Afternoon";
+                panelColor = "rgba(100, 200, 255, 0.2)"; // Afternoon Sky
+                borderColor = "rgba(0, 191, 255, 0.4)";
+            } else if (hours >= 17 && hours < 22) {
+                greeting = "Good Evening";
+                panelColor = "rgba(180, 100, 255, 0.2)"; // Evening Violet
+                borderColor = "rgba(138, 43, 226, 0.4)";
+            } else if (hours >= 22 || hours < 5) {
+                greeting = "Good Night";
+                panelColor = "rgba(50, 50, 100, 0.4)"; // Night Deep
+                borderColor = "rgba(255, 255, 255, 0.2)";
+            }
+
+            greetingElement.textContent = greeting;
+            panelElement.style.background = panelColor;
+            panelElement.style.borderColor = borderColor;
+
+            // Also subtly tune the Navbar glass to match
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.style.borderBottomColor = borderColor;
+            }
+        }
+
+        updateTimeGreeting();
+        setInterval(updateTimeGreeting, 60000); // Check every minute
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Progress bar animations
-        const progressObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progressBars = entry.target.querySelectorAll('.progress-bar');
-                    progressBars.forEach(bar => {
+                    const bars = entry.target.querySelectorAll('.progress-bar');
+                    bars.forEach(bar => {
                         const width = bar.getAttribute('data-width');
-                        setTimeout(() => {
-                            bar.style.width = width + '%';
-                        }, 200);
+                        bar.style.width = width + '%';
+                        bar.style.transition = 'width 1.5s ease-in-out';
                     });
                 }
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('#skills').forEach(section => {
-            progressObserver.observe(section);
-        });
-        
-        // Contact form handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Create mailto link
-            const mailtoLink = `mailto:vasanthan2507@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-                `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-            )}`;
-            
-            // Open default email client
-            window.open(mailtoLink);
-            
-            // Show success message
-            alert('Thank you for your message! Your default email client should now open with the composed message.');
-            
-            // Reset form
-            this.reset();
-        });
-        
-        // Download functions
-function downloadResume() {
-    const confirmDownload = confirm("Do you want to download the resume?");
-    if (confirmDownload) {
-        const link = document.createElement('a');
-        link.href = 'VasanthanResume.pdf';
-        link.download = 'VasanthanResume.pdf';
-        link.click();
-    } else {
-        alert("Download canceled.");
-    }
-}
+        }, { threshold: 0.1 });
 
-        
-        function downloadSourceCode() {
-            // Create a simple source code package info
-            const sourceInfo = `
-=== Portfolio Source Code ===
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-This portfolio is built with:
-- HTML5
-- CSS3 (Custom Properties for theming)
-- Bootstrap 5.3.0
-- Vanilla JavaScript
-- Font Awesome Icons
-- Google Fonts (Inter & JetBrains Mono)
+        // Smooth Scroll is handled by CSS html { scroll-behavior: smooth; } now.
+        // Removed conflicting JS listener.
 
-Features:
-- Responsive design for all devices
-- Multiple color themes (Green, Purple, Blue, Brown, Orange)
-- Light/Dark mode toggle
-- Smooth scrolling navigation
-- Animated progress bars
-- Contact form with mailto integration
-- Modern card-based layout
-- Professional typography
+        // Custom Modal Function
+        function showModal(title, message) {
+            const modalElement = document.getElementById('statusModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
 
-To use this code:
-1. Save the HTML as index.html
-2. Ensure you have an internet connection for CDN resources
-3. Replace image.jpg with your profile picture
-4. Customize the content with your information
-5. Deploy to any web hosting service
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
 
-The code is fully self-contained and ready for deployment!
-            `;
-            
-            // Create a downloadable text file with instructions
-            const blob = new Blob([sourceInfo], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'portfolio-source-info.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            alert('Source code information downloaded! The complete HTML source can be saved using your browser\'s "Save Page As" feature.');
+            const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            modal.show();
         }
-        
-        // Initialize theme manager
-        document.addEventListener('DOMContentLoaded', () => {
-            new ThemeManager();
+
+        // Confirmation Modal Logic
+        let confirmCallback = null;
+
+        function showConfirmation(title, message, callback) {
+            const modalElement = document.getElementById('confirmationModal');
+            document.getElementById('confirmTitle').textContent = title;
+            document.getElementById('confirmMessage').textContent = message;
+
+            confirmCallback = callback;
+
+            const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            modal.show();
+        }
+
+        document.getElementById('confirmBtn').addEventListener('click', () => {
+            if (confirmCallback) confirmCallback();
+            const modalEl = document.getElementById('confirmationModal');
+            const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            modal.hide();
         });
-        
-        // Add active nav link on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section[id]');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
+
+        function downloadResume() {
+            showConfirmation(
+                "Download Resume",
+                "Do you want to download the resume?",
+                () => {
+                    // Simulate download or put actual logic
+                    const link = document.createElement('a');
+                    link.href = 'VasanthanResume.pdf'; // Ensure this file exists or is valid
+                    link.download = 'VasanthanResume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    setTimeout(() => {
+                        showModal("Download Started", "Your resume download has begun.");
+                    }, 500);
                 }
-            });
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Mobile navigation close on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
-                    bootstrap.Collapse.getInstance(navbarCollapse).hide();
-                }
-            });
-        });
+            );
+        }
+
+
+        function downloadSourceCode() {
+            showModal("Source Code Access", "Redirecting you to the source code repository...");
+            setTimeout(() => window.open('https://github.com/vasanthan2507/Portfolio/tree/main', '_blank'), 2000);
+        }
     </script>
 </body>
+
 </html>
