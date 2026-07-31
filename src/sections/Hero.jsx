@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { HiArrowDown } from 'react-icons/hi';
+import { HiArrowDown, HiDownload } from 'react-icons/hi';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 22 },
@@ -159,7 +159,6 @@ export default function Hero() {
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            aria-hidden="true"
           >
             <div className="hero-side-orbit">
               <span />
@@ -185,6 +184,16 @@ export default function Hero() {
               <div><strong>UI</strong><span>Systems</span></div>
               <div><strong>API</strong><span>Backends</span></div>
             </div>
+
+            <a
+              className="hero-resume-download"
+              href="/Vasanthan%20Resume.pdf"
+              download="Vasanthan Resume.pdf"
+              aria-label="Download Vasanthan Resume PDF"
+            >
+              <HiDownload size={18} />
+              <span>Download Resume</span>
+            </a>
           </motion.div>
         </motion.div>
       </div>
@@ -694,6 +703,51 @@ export default function Hero() {
           text-transform: uppercase;
         }
 
+        .hero-resume-download {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.65rem;
+          min-height: 3.25rem;
+          width: min(24vw, 310px);
+          margin: 1.15rem 0 0 auto;
+          border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+          border-radius: 8px;
+          background:
+            linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), transparent 58%),
+            color-mix(in srgb, var(--surface) 28%, transparent);
+          color: var(--text-primary);
+          font-size: 0.74rem;
+          font-weight: 600;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          text-decoration: none;
+          box-shadow:
+            0 18px 48px rgba(0, 0, 0, 0.22),
+            0 0 34px color-mix(in srgb, var(--accent) 12%, transparent),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+        }
+
+        .hero-resume-download:hover {
+          transform: translateY(-3px);
+          border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+          color: var(--accent);
+          box-shadow:
+            0 22px 56px rgba(0, 0, 0, 0.28),
+            0 0 44px color-mix(in srgb, var(--accent) 20%, transparent),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-resume-download svg,
+        .hero-resume-download span {
+          position: relative;
+          z-index: 1;
+        }
+
         .hero-scroll {
           position: absolute;
           left: 50%;
@@ -783,6 +837,11 @@ export default function Hero() {
             padding: clamp(1rem, 2vw, 2rem) 0;
           }
 
+          .hero-resume-download {
+            position: relative;
+            margin: 1.5xrem 0 0 auto;
+          }
+
           .hero-blue-core {
             left: 36%;
           }
@@ -818,6 +877,27 @@ export default function Hero() {
           .hero-portrait-stage {
             width: min(88vw, 340px);
             aspect-ratio: 0.72 / 1;
+          }
+
+          .hero-side-objects {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding-top: 0;
+          }
+
+          .hero-side-orbit,
+          .hero-object-card,
+          .hero-object-stats {
+            display: none;
+          }
+
+          .hero-resume-download {
+            width: min(100%, 310px);
+            margin: clamp(10rem, 22vw, 14rem) auto 0;
+            position: relative;
+            left: auto;
+            top: auto;
           }
 
           .hero-blue-core {
