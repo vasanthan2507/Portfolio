@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiSun, HiMoon, HiX } from 'react-icons/hi';
+import { HiX } from 'react-icons/hi';
 import { RiHome4Line, RiBriefcaseLine, RiUser3Line, RiCodeSSlashLine, RiRoadMapLine, RiMailLine, RiMenuLine } from 'react-icons/ri';
 import { navLinks } from '../data';
 import { useActiveSection } from '../hooks/useActiveSection';
@@ -95,14 +95,6 @@ export default function Nav({ theme, toggleTheme }) {
           {/* Right controls */}
           <div className="flex items-center gap-3">
             <button
-              onClick={toggleTheme}
-              className="w-9 h-9 flex items-center justify-center rounded-full border border-subtle text-secondary hover:text-accent hover:border-accent transition-all duration-300"
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-              {theme === 'dark' ? <HiSun size={16} /> : <HiMoon size={16} />}
-            </button>
-
-            <button
               onClick={() => setMobileOpen(o => !o)}
               className="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-subtle text-secondary hover:text-accent hover:border-accent transition-all duration-300"
               aria-label="Toggle mobile menu"
@@ -133,23 +125,6 @@ export default function Nav({ theme, toggleTheme }) {
               padding: '2rem',
             }}
           >
-            {/* Close row */}
-            <div style={{ position: 'absolute', top: '1.25rem', right: '1.25rem' }}>
-              <button
-                onClick={() => setMobileOpen(false)}
-                style={{
-                  width: '40px', height: '40px', borderRadius: '50%',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  background: 'rgba(255,255,255,0.04)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--text-secondary)', cursor: 'pointer',
-                }}
-                aria-label="Close menu"
-              >
-                <HiX size={18} />
-              </button>
-            </div>
-
             {/* Nav items */}
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
               {navLinks.map(({ label, href }, i) => {
