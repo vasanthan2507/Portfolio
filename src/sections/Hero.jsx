@@ -891,7 +891,7 @@ export default function Hero() {
 
           .hero-side-objects {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
             width: 100%;
             padding: 2.5rem 0 0;
@@ -904,7 +904,8 @@ export default function Hero() {
           }
 
           .hero-resume-download {
-            width: min(100%, 310px);
+            width: min(100%, 92vw);
+            max-width: 310px;
             margin: 0;
             position: relative;
             left: auto;
