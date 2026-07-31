@@ -828,7 +828,10 @@ export default function Hero() {
 
           .hero-side-objects {
             position: relative;
-            display: block;
+            z-index: 6;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             grid-column: 2;
             grid-row: 1 / span 2;
             align-self: center;
@@ -837,9 +840,16 @@ export default function Hero() {
             padding: clamp(1rem, 2vw, 2rem) 0;
           }
 
+          .hero-side-objects > .hero-object-card,
+          .hero-side-objects > .hero-object-stats,
+          .hero-side-objects > .hero-side-orbit {
+            align-self: flex-start;
+          }
+
           .hero-resume-download {
-            position: relative;
-            margin: 1.5xrem 0 0 auto;
+            z-index: 7;
+            align-self: flex-end;
+            margin: 2rem 0 0;
           }
 
           .hero-blue-core {
@@ -881,9 +891,10 @@ export default function Hero() {
 
           .hero-side-objects {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
+            align-items: center;
             width: 100%;
-            padding-top: 0;
+            padding: 2.5rem 0 0;
           }
 
           .hero-side-orbit,
@@ -894,7 +905,7 @@ export default function Hero() {
 
           .hero-resume-download {
             width: min(100%, 310px);
-            margin: clamp(10rem, 22vw, 14rem) auto 0;
+            margin: 0;
             position: relative;
             left: auto;
             top: auto;
